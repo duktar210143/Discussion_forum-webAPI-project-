@@ -1,0 +1,36 @@
+
+.appbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(172, 202, 214);
+  }
+  
+  .input-container {
+    display: flex;
+    align-items: center;
+    padding-right: 100px;
+  }
+  .input-container input{
+    width: 300px;
+    border-radius: 8px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+  }
+  .input-container img:nth-child(2) {
+    margin: 100px !important; /* Adjust the value as needed */
+  }
+  
+  .right-container{
+    display: flex;
+    align-items: center;
+    padding:10px;
+  }
+
+  .appbar-items{
+    padding: 10px;
+  }
+  
+  /* Add any additional styling as needed */
+  
