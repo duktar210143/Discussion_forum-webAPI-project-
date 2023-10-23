@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router";
-import AppBar from "../CommonComponents/AppBar";
+import AppBar from "../AppBar/AppBar";
 import backgroundImage from "../../Assets/Images/mario_login.png";
 
 const Container = styled.div`
@@ -53,43 +53,49 @@ const StyledButton = styled.button`
   font-weight: bold;
   padding-left: 40px;
   margin-top: 20px;
-  margin-left:190px;
+  margin-left: 190px;
   border-radius: 20px;
   border: 5px solid;
-  display:flex;
-  align-item:center;
-  flex-direction:column;
-  justify-content:center;
+  display: flex;
+  align-item: center;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const Login = () => {
-
-  const [email,setEmail] = useState('');
-  const [password,setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
-  async function loginUser(event){
+  async function loginUser(event) {
     event.preventDefault();
-    const response  = await fetch("http://localhost:1337/api/login",{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      })
-    })
-    const data = await response.json();
-    console.log(data);
-    if(data.status === 'ok'){
-      navigate('/dashboard')
-    }else {
-      // Signup failed, handle the error
-      navigate('/login')
-      console.log("login failed:", data.error);
-      // You can display an error message to the user or take other actions here
+
+    try {
+      const response = await fetch("http://localhost:1337/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      const data = await response.json();
+      console.log(data);
+      if (data.status === "ok") {
+        console.log(data);
+
+        navigate("/dashboard");
+      } else {
+        // Signup failed, handle the error
+        navigate("/login");
+        console.log("login failed:", data.error);
+        // You can display an error message to the user or take other actions here
+      }
+    } catch {
+      console.error("Error during fetch:");
     }
   }
 
@@ -99,24 +105,24 @@ const Login = () => {
         <label style={{ paddingRight: 30 }}>Login</label>
       </AppBar>
       <Content>
-      <form onSubmit={loginUser}>
-        <StyledInputDiv>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-          />
-        </StyledInputDiv>
-        <StyledInputDiv>
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="create password"
-          />
-        </StyledInputDiv>
-        <StyledButton type="submit">Login</StyledButton>
+        <form onSubmit={loginUser}>
+          <StyledInputDiv>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+          </StyledInputDiv>
+          <StyledInputDiv>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              placeholder="create password"
+            />
+          </StyledInputDiv>
+          <StyledButton type="submit">Login</StyledButton>
         </form>
       </Content>
     </Container>

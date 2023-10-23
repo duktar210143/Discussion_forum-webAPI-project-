@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 import backgroundImage from "../../Assets/Images/mario.png";
-import AppBar from "../CommonComponents/AppBar";
+import AppBar from "../AppBar/AppBar"
 
 const Container = styled.div`
   display: flex;
