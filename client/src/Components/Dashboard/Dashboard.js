@@ -5,9 +5,13 @@ import bellpng from '../../Assets/Icons/bell.png'
 import search from'../../Assets/Icons/search.png'
 import defaultProfile from '../../Assets/Icons/default_profile.png'
 import editpen from'../../Assets/Icons/editpen.png'
+import SetProfile from "./SetProfile";
+import GetProfile from "./GetProfile";
+import { ProfileImageProvider } from "./ProfileImageContext";
 
 const Dashboard = () => {
   return (
+    <div>
     <div className="appbar-container">
       <div className="right-container">
         <img className="appbar-items" src={homeImg} alt="Home"/>
@@ -20,6 +24,11 @@ const Dashboard = () => {
         <input></input>
         <img src={defaultProfile} alt=""></img>
       </div>
+    </div>
+    <ProfileImageProvider>
+    <GetProfile/>
+    <SetProfile/>
+    </ProfileImageProvider>
     </div>
   );
 };

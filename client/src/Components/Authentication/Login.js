@@ -85,6 +85,7 @@ const Login = () => {
       const data = await response.json();
       console.log(data);
       if (data.status === "ok") {
+        localStorage.setItem('token',data.user);
         console.log(data);
 
         navigate("/dashboard");
@@ -92,6 +93,7 @@ const Login = () => {
         // Signup failed, handle the error
         navigate("/login");
         console.log("login failed:", data.error);
+        alert('wrong fukin password ya')
         // You can display an error message to the user or take other actions here
       }
     } catch {
