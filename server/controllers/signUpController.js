@@ -1,4 +1,4 @@
-const User = require("../models/user.model");
+const User = require("../models/User.model");
 const bcrypt = require("bcrypt");
 
 const createUser = async (req, res) => {
@@ -7,7 +7,7 @@ const createUser = async (req, res) => {
       email: req.body.email,
     })
       .exec()
-      .then(user => {
+      .then((user) => {
         if (user.length >= 1) {
           return res.status(409).json({
             message: "user already exist",
@@ -25,7 +25,7 @@ const createUser = async (req, res) => {
               });
               user.save().then((result) => {
                 res.status(200).json({
-                  status:'ok',
+                  status: "ok",
                   result: "User Created",
                 });
               });

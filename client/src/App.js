@@ -3,8 +3,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import Login from "./Components/Authentication/Login";
 import Signup from "./Components/Authentication/SignUp";
-import Dashboard from "./Components/Dashboard/Dashboard";
-import SetProfile from "./Components/Dashboard/SetProfile";
+import Dashboard from "./Components/Home/Pages/Dashboard/Dashboard";
+import SetProfile from "./Components/Home/Pages/ProfileComponents/SetProfile";
 
 const App = () => {
   return (
@@ -13,8 +13,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path = "/profile" element={<SetProfile/>} />
-        <></>
+        <Route path="/profile" element={<SetProfile />} />
       </Routes>
     </Router>
   );

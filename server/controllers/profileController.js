@@ -1,14 +1,15 @@
-const User = require("../models/user.model");
+const User = require("../models/User.model");
 const jwt = require("jsonwebtoken");
 
 const profileController = async (req, res) => {
   try {
     if (req.file) {
       const token = req.headers["x-access-token"];
+      console.log(token);
       if (!token) {
         return res.status(401).json({ error: "Token not provided" });
       }
-      
+
       try {
         const decoded = jwt.verify(token, "secretKey200");
         const email = decoded.email;
@@ -24,14 +25,14 @@ const profileController = async (req, res) => {
         return res.json({ status: "ok", profile: user.image });
       } catch (error) {
         console.error("Token Verification Error:", error);
-        res.status(401).json({ error: "Unauthorized" });
+        return res.status(401).json({ error: "Unauthorized" });
       }
     } else {
-      res.status(400).json({ error: "No file uploaded" });
+      return res.status(400).json({ error: "No file uploaded" });
     }
   } catch (error) {
     console.error("Server Error:", error);
-    res.status(500).json({ error: "Server error" });
+    return res.status(500).json({ error: "Server error" });
   }
 };
 
@@ -50,7 +51,7 @@ const getProfileController = async (req, res) => {
       if (!user) {
         return res.status(404).json({ error: "User not found" });
       }
-      return res.json({ status: "ok", profile: user.image });
+      return res.json({ status: "ok", profile: user.image, email: user.email });
     } catch (error) {
       console.error("Token Verification Error:", error);
       res.status(401).json({ error: "Unauthorized" });

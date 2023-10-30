@@ -103,9 +103,6 @@ const Login = () => {
 
   return (
     <Container>
-      <AppBar>
-        <label style={{ paddingRight: 30 }}>Login</label>
-      </AppBar>
       <Content>
         <form onSubmit={loginUser}>
           <StyledInputDiv>

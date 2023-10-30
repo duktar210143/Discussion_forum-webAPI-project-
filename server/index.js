@@ -17,15 +17,21 @@ databaseConnection();
 const multerMiddleWare = setUpMultMiddleWare();
 
 // post request to register user
-app.use("/api", require("./routes/signUpRoute"));
+app.use("/api", require("./Routes/SignUpRoute"));
 // get request to handle login
-app.use("/api", require("./routes/loginRoute"));
+app.use("/api", require("./Routes/LoginRoute"));
 
 // post route for uploading image using multer and profileController
-app.use("/api",multerMiddleWare, require("./routes/profileRoutes"))
+app.use("/api",multerMiddleWare, require("./Routes/ProfileRoutes"))
 
 // Get route for fetching image from the server
-app.use("/api", require("./routes/profileRoutes"));
+app.use("/api", require("./Routes/ProfileRoutes"));
+
+// Set question route for posting the questions
+app.use("/api",require("./Routes/QuestionsRoute"))
+
+// Get question route for plotting the questions on screen
+app.use("/api/getQuestions",require("./Routes/QuestionsRoute"))
 
 app.listen(1337, () => {
   console.log("server started on 1337");

@@ -1,0 +1,118 @@
+
+.question-list {
+  list-style: none;
+  padding: 0;
+}
+
+.question-item {
+  margin: 2%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.5s, color 0.5s; /* Add transitions */
+
+}
+
+
+.question-item:hover{
+  color: white;
+  background-color: #333;
+  opacity: 0.7;
+}
+
+
+
+.question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question-header h3 {
+  font-size: 18px;
+  margin: 0;
+  flex: 1;
+}
+
+.question-actions {
+  display: flex;
+}
+
+.heart-button,
+.edit-button,
+.reply-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #999;
+  transition: color 0.2s;
+}
+
+/* Vintage hover effect for like, edit, and reply buttons */
+.heart-button:hover,
+.edit-button:hover,
+.reply-button:hover {
+  color: #f05146;
+}
+
+.question-info {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #999;
+}
+
+/* Style the reply button */
+.reply-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+  transition: color 0.2s;
+}
+
+/* Vintage hover effect for the reply button */
+.reply-button:hover {
+  color: #1e90ff;
+}
+
+
+.loading-spinner {
+  text-align: center;
+  margin: 20px;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.no-questions-found {
+  text-align: center;
+  margin: 20px;
+  color: #f05146;
+  font-weight: bold;
+}
+
+.no-questions-found p {
+  font-size: 18px;
+  font-style: italic;
+}

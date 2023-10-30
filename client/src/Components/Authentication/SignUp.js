@@ -134,9 +134,6 @@ const Signup = () => {
 
   return (
     <Container>
-      <AppBar>
-        <label>Sign Up</label>
-      </AppBar>
       <Content>
         <form onSubmit={handleSignUp}>
           <StyledInputDiv>

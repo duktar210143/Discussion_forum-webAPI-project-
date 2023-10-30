@@ -1,16 +1,106 @@
-.AppBar{
-    width: 100%;
-    height: 10%;
-    border-bottom-left-radius:50px;
-    border-bottom-right-radius:50px;
+/* AppBar styling */
+.AppBar {
+  width: 100%;
+  height: 50px; /* Reduced height */
+  background-color: #F5F5F5; /* Change the color to match your design */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.AppBar label{
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 30px;
-    font-size: 50px;
-    font-weight: bold;
+/* Title styling */
+.AppBar label {
+  color: white;
+  font-size: 20px; /* Reduced font size */
+  font-weight: bold;
 }
+
+
+
+/* Search input and icon */
+.input-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: 30px;
+  padding: 5px;
+  height: 20px;
+  width: 250px; /* Reduced width */
+}
+
+.input-container input {
+  border: none;
+  margin-left: auto;
+  outline: none;
+  width: 100%;
+  padding: 10px;
+  height: 10%;
+}
+
+
+/* Right container for icons */
+.right-container {
+  margin-top: 5px;
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+/* App bar items/icons */
+.appbar-items {
+  height: 30px;
+  padding: 10px;
+  color: white;
+  font-size: 20px; /* Reduced font size */
+  cursor: pointer;
+}
+
+.AppBar .appbar-items:nth-child(3){
+  margin-bottom: 5px;
+  margin-left: 2px;
+}
+
+@media (max-width: 768px) {
+  .input-container {
+    display: none;
+  }
+}
+
+
+
+.button-reset {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer; /* Optional: Change cursor on hover */
+  margin: 0;
+}
+
+.penSquare-icon {
+  color: black;
+  margin-top: -3px; /* Adjust the margin-top to move the icon up */
+  transition: all 0.2s ease; /* Add a smooth transition for all properties */
+  display: inline-block; /* Ensure the icon takes up space for the transition */
+  transform: scale(1); /* Initial size */
+}
+
+.penSquare-icon:hover {
+  opacity: 0.4;
+  transform: scale(1.4); /* Increase size on hover */
+}
+
+
+
+.logoName {
+  font-family: 'Lobster', cursive; /* Use 'Lobster' or the font you prefer */
+  color: #537a8d; /* Vintage brownish color */
+  font-size: 23px; /* Adjust font size as needed */
+  font-weight: bold;
+}
+
