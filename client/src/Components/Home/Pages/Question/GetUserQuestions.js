@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./GetUserQuestions.css";
+import { useNavigate } from "react-router-dom";
 
 // import question state provider
 import { RecentAddedQuestion } from "../../Providers/LatestQuestionContext";
-
-import { Pencil } from "lucide-react";
-import { Heart } from "lucide-react";
-import { Reply } from "lucide-react";
-
-const GetUserQuestions = () => {
+import { Pencil, Heart, Reply } from "lucide-react";
+import EditUserQuestion from "./EditUserQuestions";
+import { baseApiUrl } from "../apiConfig";
+const GetUserQuestions = ({ isEditOpen, onEditClose, openEditModal }) => {
   const navigate = useNavigate();
   const { question, setQuestion } = RecentAddedQuestion();
   const [isLoading, setIsLoading] = useState(true); // Track loading state
+
+  // state of edited question
+  // model open true or false
 
   async function fetchUserSpecificQuestions() {
     try {
@@ -23,9 +24,8 @@ const GetUserQuestions = () => {
         navigate("/login");
         return;
       }
-
       // send a fetch request to the API endpoint for questions
-      const req = await fetch("http://localhost:1337/api/getQuestions", {
+      const req = await fetch( `${baseApiUrl}getQuestions`, {
         method: "GET",
         headers: {
           "x-access-token": token,
@@ -75,9 +75,10 @@ const GetUserQuestions = () => {
                     <button className="heart-button">
                       <Heart strokeWidth={1.5} />
                     </button>
-                    <button className="edit-button">
+                    <button className="edit-button" onClick={() => openEditModal(addedQuestion._id)}>
                       <Pencil strokeWidth={1.5} />
                     </button>
+                    {/* Upon the 'Edit' button click, update the 'Id' state to correspond to the respective question. */}
                     <button className="reply-button">
                       <Reply strokeWidth={1.5} />
                     </button>
@@ -88,10 +89,16 @@ const GetUserQuestions = () => {
             ))
           ) : (
             <div className="no-questions-found">
-            <p>No questions found. Ask a question to get started!</p>
-          </div>
+              <p>No questions found. Ask a question to get started!</p>
+            </div>
           )}
         </ul>
+      )}
+         {/* Conditionally render EditUserQuestion based on isEditOpen */}
+         {isEditOpen && (
+        <EditUserQuestion
+          onClose={onEditClose}
+        />
       )}
     </div>
   );

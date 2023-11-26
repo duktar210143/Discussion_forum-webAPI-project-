@@ -6,9 +6,11 @@ import { RecentAddedQuestion } from "../../Providers/LatestQuestionContext";
 import "./SetUserQuestions.css";
 import jwt from "jsonwebtoken";
 
-const SetUserQuestions = ({ isOpen, onClose, onSubmit }) => {
+{/*  pass the state  state from appbar component to open and close Question field
+and functions from dashboard components */}
+const SetUserQuestions = ({ isOpen, onClose }) => {
   const [newQuestion, setNewQuestion] = useState([]); // To store the value of the text area
-  const { question, setQuestion } = RecentAddedQuestion();
+  const { setQuestion } = RecentAddedQuestion();
   const navigate = useNavigate();
 
   const handleQuestionChange = (event) => {

@@ -6,6 +6,7 @@ import Signup from "./Components/Authentication/SignUp";
 import Dashboard from "./Components/Home/Pages/Dashboard/Dashboard";
 import SetProfile from "./Components/Home/Pages/ProfileComponents/SetProfile";
 
+
 const App = () => {
   return (
     <Router>
@@ -16,6 +17,8 @@ const App = () => {
         <Route path="/profile" element={<SetProfile />} />
       </Routes>
     </Router>
+    
+
   );
 };
 

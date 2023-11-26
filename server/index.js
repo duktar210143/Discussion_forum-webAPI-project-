@@ -33,6 +33,8 @@ app.use("/api",require("./Routes/QuestionsRoute"))
 // Get question route for plotting the questions on screen
 app.use("/api/getQuestions",require("./Routes/QuestionsRoute"))
 
+app.use("/api",require("./Routes/EditQuestionRoute"))
+
 app.listen(1337, () => {
   console.log("server started on 1337");
 });

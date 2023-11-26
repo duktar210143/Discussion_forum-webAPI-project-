@@ -25,7 +25,7 @@ const loginUser = async (req, res) => {
         );
         console.log(token);
         // User was found, respond with a success message and send the jwt signed token
-        return res.json({ status: "ok", user: token });
+        return res.json({ status: "ok", user: token, email: user.email });
       } else {
         // password do not match respond with an error message
         return res
